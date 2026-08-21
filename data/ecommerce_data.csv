@@ -1,0 +1,26 @@
+Order_ID,Order_Date,Order_Time,Customer_ID,Gender,Age,City,Region,Product_Name,Category,Quantity,Unit_Price,Discount,Cost,Payment_Method,Order_Status,Customer_Type,Session_Duration,Pages_Viewed,Order_Completed,Shipping_Days,Return_Status
+ORD1001,2026-01-03,10:15,CU001,Male,24,Chennai,South,Wireless Mouse,Electronics,2,799,0.05,1100,UPI,Delivered,New,8.5,6,1,3,No
+ORD1002,2026-01-04,14:20,CU002,Female,29,Bangalore,South,Running Shoes,Fashion,1,2499,0.10,1500,Card,Delivered,Returning,12.2,9,1,4,No
+ORD1003,2026-01-05,19:45,CU003,Male,34,Hyderabad,South,Smart Watch,Electronics,1,3999,0.08,2700,UPI,Delivered,New,15.4,11,1,3,No
+ORD1004,2026-01-06,21:10,CU004,Female,26,Mumbai,West,Backpack,Fashion,2,1499,0.15,1800,Card,Delivered,Returning,9.8,7,1,5,Yes
+ORD1005,2026-01-07,11:30,CU005,Male,41,Delhi,North,Office Chair,Furniture,1,6999,0.05,5200,Net Banking,Delivered,Returning,18.1,13,1,6,No
+ORD1006,2026-01-08,16:05,CU006,Female,23,Coimbatore,South,Bluetooth Speaker,Electronics,2,1299,0.12,1500,UPI,Delivered,New,7.4,5,1,3,No
+ORD1007,2026-01-09,20:35,CU007,Male,31,Pune,West,Jeans,Fashion,3,1899,0.10,3600,Card,Delivered,Returning,11.6,8,1,4,No
+ORD1008,2026-01-10,09:50,CU008,Female,37,Kochi,South,Coffee Maker,Home Appliances,1,3299,0.07,2300,UPI,Delivered,New,14.3,10,1,3,No
+ORD1009,2026-01-11,18:25,CU009,Male,28,Kolkata,East,Keyboard,Electronics,1,1799,0.05,1200,Card,Cancelled,New,6.2,4,0,0,No
+ORD1010,2026-01-12,22:15,CU010,Female,32,Chennai,South,Handbag,Fashion,1,2799,0.12,1700,UPI,Delivered,Returning,13.7,9,1,4,No
+ORD1011,2026-01-13,13:40,CU011,Male,45,Delhi,North,Monitor,Electronics,1,8999,0.08,6900,Card,Delivered,Returning,21.5,15,1,5,No
+ORD1012,2026-01-14,17:55,CU012,Female,27,Bangalore,South,Yoga Mat,Sports,2,899,0.05,1000,UPI,Delivered,New,8.1,6,1,3,No
+ORD1013,2026-01-15,20:20,CU013,Male,36,Mumbai,West,Air Fryer,Home Appliances,1,5499,0.10,3900,Card,Delivered,Returning,16.8,12,1,4,No
+ORD1014,2026-01-16,12:10,CU014,Female,30,Hyderabad,South,Smartphone,Electronics,1,18999,0.06,15500,Net Banking,Delivered,New,24.3,17,1,5,No
+ORD1015,2026-01-17,19:05,CU015,Male,22,Pune,West,T-Shirt,Fashion,4,799,0.15,1900,UPI,Delivered,New,10.2,7,1,3,Yes
+ORD1016,2026-01-18,15:35,CU016,Female,39,Kochi,South,Table Lamp,Home Appliances,2,1199,0.05,1300,Card,Delivered,Returning,7.9,5,1,3,No
+ORD1017,2026-01-19,21:45,CU017,Male,33,Chennai,South,Power Bank,Electronics,2,1599,0.10,1900,UPI,Delivered,Returning,12.5,9,1,4,No
+ORD1018,2026-01-20,10:55,CU018,Female,25,Kolkata,East,Formal Shoes,Fashion,1,2999,0.08,2100,Card,Delivered,New,14.9,10,1,5,No
+ORD1019,2026-01-21,18:40,CU019,Male,48,Delhi,North,Books,Books,5,499,0.05,1400,UPI,Delivered,Returning,9.1,7,1,3,No
+ORD1020,2026-01-22,20:50,CU020,Female,35,Mumbai,West,Headphones,Electronics,1,2499,0.10,1600,Card,Delivered,Returning,17.2,12,1,4,No
+ORD1021,2026-01-23,11:15,CU021,Male,29,Coimbatore,South,Electric Kettle,Home Appliances,1,1799,0.07,1200,UPI,Delivered,New,8.8,6,1,3,No
+ORD1022,2026-01-24,16:30,CU022,Female,42,Bangalore,South,Dress,Fashion,2,2199,0.12,2500,Card,Delivered,Returning,13.1,9,1,5,No
+ORD1023,2026-01-25,19:55,CU023,Male,27,Hyderabad,South,USB Cable,Electronics,3,499,0.05,700,UPI,Delivered,New,5.9,4,1,2,No
+ORD1024,2026-01-26,21:25,CU024,Female,31,Chennai,South,Air Purifier,Home Appliances,1,7999,0.10,5900,Card,Delivered,Returning,20.4,14,1,5,No
+ORD1025,2026-01-27,14:45,CU025,Male,38,Pune,West,Laptop Stand,Electronics,2,1999,0.08,2400,UPI,Delivered,New,11.3,8,1,3,No

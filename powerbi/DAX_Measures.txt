@@ -1,0 +1,122 @@
+/* ============================================================
+   E-COMMERCE SALES PERFORMANCE DASHBOARD — DAX MEASURES
+   Data model: fact_orders (many) --> dim_customers (1), dim_products (1)
+   Import this data via Power Query from:
+     sql/ecommerce.db  OR  data/ecommerce_data_enriched.csv
+   Create a Date table (Auto date/time off) and mark it as Date Table.
+   ============================================================ */
+
+-- ===================== CORE KPI MEASURES =====================
+
+Total Revenue =
+SUMX ( fact_orders, fact_orders[Quantity] * fact_orders[Unit_Price] * (1 - fact_orders[Discount]) )
+
+Total Cost =
+SUM ( fact_orders[Cost] )
+
+Total Profit =
+[Total Revenue] - [Total Cost]
+
+Profit Margin % =
+DIVIDE ( [Total Profit], [Total Revenue], 0 )
+
+Total Orders =
+DISTINCTCOUNT ( fact_orders[Order_ID] )
+
+Completed Orders =
+CALCULATE ( [Total Orders], fact_orders[Order_Completed] = 1 )
+
+Total Customers =
+DISTINCTCOUNT ( fact_orders[Customer_ID] )
+
+Average Order Value =
+DIVIDE ( [Total Revenue], [Completed Orders], 0 )
+
+Conversion Rate % =
+DIVIDE ( [Completed Orders], [Total Orders], 0 )
+
+Return Rate % =
+DIVIDE (
+    CALCULATE ( [Total Orders], fact_orders[Return_Status] = "Yes" ),
+    [Completed Orders], 0
+)
+
+Total Discount Given =
+SUMX ( fact_orders, fact_orders[Quantity] * fact_orders[Unit_Price] * fact_orders[Discount] )
+
+-- ===================== TIME INTELLIGENCE =====================
+
+Revenue (Prior Month) =
+CALCULATE ( [Total Revenue], DATEADD ( 'Date'[Date], -1, MONTH ) )
+
+Revenue MoM Growth % =
+DIVIDE ( [Total Revenue] - [Revenue (Prior Month)], [Revenue (Prior Month)], 0 )
+
+Running Total Revenue =
+CALCULATE (
+    [Total Revenue],
+    FILTER ( ALLSELECTED ( 'Date'[Date] ), 'Date'[Date] <= MAX ( 'Date'[Date] ) )
+)
+
+-- ===================== CUSTOMER MEASURES =====================
+
+New Customer Revenue =
+CALCULATE ( [Total Revenue], dim_customers[Customer_Type] = "New" )
+
+Returning Customer Revenue =
+CALCULATE ( [Total Revenue], dim_customers[Customer_Type] = "Returning" )
+
+Repeat Customer Rate % =
+VAR ReturningCust = CALCULATE ( DISTINCTCOUNT ( fact_orders[Customer_ID] ), dim_customers[Customer_Type] = "Returning" )
+RETURN DIVIDE ( ReturningCust, [Total Customers], 0 )
+
+-- ===================== PRODUCT / CATEGORY MEASURES =====================
+
+Category Profit Margin % =
+DIVIDE (
+    CALCULATE ( [Total Profit] ),
+    CALCULATE ( [Total Revenue] ),
+    0
+)   -- evaluate inside Category context on the matrix/table visual
+
+Top Product Rank =
+RANKX ( ALL ( dim_products[Product_Name] ), [Total Revenue], , DESC )
+
+-- ===================== OPERATIONS MEASURES =====================
+
+Avg Shipping Days =
+AVERAGE ( fact_orders[Shipping_Days] )
+
+Avg Session Duration (min) =
+AVERAGE ( fact_orders[Session_Duration] )
+
+Avg Pages Viewed =
+AVERAGE ( fact_orders[Pages_Viewed] )
+
+Peak Order Hour =
+VAR HourlyOrders =
+    ADDCOLUMNS (
+        SUMMARIZE ( fact_orders, fact_orders[Order_Hour] ),
+        "OrderCount", CALCULATE ( [Total Orders] )
+    )
+RETURN
+    MAXX ( TOPN ( 1, HourlyOrders, [OrderCount] ), fact_orders[Order_Hour] )
+
+-- ===================== DISCOUNT vs PROFIT =====================
+
+Discount Band =
+SWITCH (
+    TRUE (),
+    fact_orders[Discount] < 0.07, "Low (0-6.9%)",
+    fact_orders[Discount] < 0.12, "Medium (7-11.9%)",
+    "High (12%+)"
+)   -- calculated column on fact_orders
+
+Avg Profit per Order =
+DIVIDE ( [Total Profit], [Completed Orders], 0 )
+
+-- ===================== KPI CARD FORMATTING NOTES =====================
+-- Total Revenue / Total Profit / Total Discount Given -> Currency, "₹#,##0"
+-- Profit Margin % / Conversion Rate % / Return Rate %  -> Percentage, 1 decimal
+-- Total Orders / Completed Orders / Total Customers    -> Whole number
+-- Average Order Value                                  -> Currency, "₹#,##0.00"

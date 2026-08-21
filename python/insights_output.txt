@@ -1,0 +1,137 @@
+======================================================================
+1. DATA CLEANING
+======================================================================
+Rows loaded: 25
+Duplicate Order_IDs: 0
+Missing values per column:
+Series([], dtype: int64)
+No missing values found.
+
+======================================================================
+2. EXPLORATORY DATA ANALYSIS
+======================================================================
+Shape: (25, 29)
+
+Numeric summary:
+         Age  Quantity  Unit_Price  Discount   Revenue   Profit
+count  25.00     25.00       25.00     25.00     25.00    25.00
+mean   32.48      1.76     3415.00      0.09   3887.47   975.47
+std     6.95      1.05     3974.99      0.03   3433.34   425.18
+min    22.00      1.00      499.00      0.05   1422.15   418.10
+25%    27.00      1.00     1299.00      0.05   2249.10   722.15
+50%    31.00      1.00     1999.00      0.08   2716.60   816.60
+75%    37.00      2.00     3299.00      0.10   3870.24  1278.16
+max    48.00      5.00    18999.00      0.15  17859.06  2359.06
+
+======================================================================
+3. REVENUE & PROFIT ANALYSIS
+======================================================================
+Total Revenue        : ₹95,477.75
+Total Profit          : ₹23,877.75
+Overall Profit Margin  : 25.01%
+Total Orders (all)      : 25
+Completed Orders          : 24
+Average Order Value        : ₹3,978.24
+
+Monthly Revenue & Profit:
+              Revenue    Profit
+Order_Month                    
+2026-01      95477.75  23877.75
+
+======================================================================
+4. PRODUCT & CATEGORY ANALYSIS
+======================================================================
+Top products by revenue:
+              Units_Sold   Revenue   Profit
+Product_Name                               
+Smartphone             1  17859.06  2359.06
+Monitor                1   8279.08  1379.08
+Air Purifier           1   7199.10  1299.10
+Office Chair           1   6649.05  1449.05
+Jeans                  3   5127.30  1527.30
+Air Fryer              1   4949.10  1049.10
+Dress                  2   3870.24  1370.24
+Smart Watch            1   3679.08   979.08
+Laptop Stand           2   3678.16  1278.16
+Coffee Maker           1   3068.07   768.07
+
+Category summary:
+                 Orders   Revenue   Profit  Margin_%
+Category                                            
+Electronics           9  43849.17  9549.17     21.78
+Fashion               7  21733.74  6633.74     30.52
+Home Appliances       5  19167.44  4567.44     23.83
+Furniture             1   6649.05  1449.05     21.79
+Books                 1   2370.25   970.25     40.93
+Sports                1   1708.10   708.10     41.46
+
+======================================================================
+5. CUSTOMER ANALYSIS
+======================================================================
+New vs Returning:
+                  Orders   Revenue      AOV
+Customer_Segment                           
+New                   11  42367.71  3851.61
+Returning             13  53110.04  4085.39
+
+Revenue by Age Group:
+Age_Group
+<=25      9280.02
+26-35    51055.68
+36-45    32771.80
+46+       2370.25
+Name: Revenue, dtype: float64
+
+======================================================================
+6. REGIONAL ANALYSIS
+======================================================================
+        Orders   Revenue    Profit
+Region                            
+South       14  54151.73  13351.73
+West         6  21268.56   6068.56
+North        3  17298.38   3798.38
+East         1   2759.08    659.08
+
+======================================================================
+7. PEAK SALES HOUR ANALYSIS
+======================================================================
+            Orders   Revenue
+Order_Hour                  
+9                1   3068.07
+10               2   4277.18
+11               2   8322.12
+12               1  17859.06
+13               1   8279.08
+14               2   5927.26
+15               1   2278.10
+16               2   6156.48
+17               1   1708.10
+18               1   2370.25
+19               3   7817.83
+20               3  12325.50
+21               3  12625.60
+22               1   2463.12
+
+Peak order-volume hour: 19:00 (3 orders)
+
+======================================================================
+8. DISCOUNT vs PROFIT ANALYSIS
+======================================================================
+                  Orders  Avg_Profit  Total_Profit
+Discount_Band                                     
+Low (0-6.9%)           7     1086.40       7604.81
+Medium (7-11.9%)      12      982.37      11788.44
+High (12%+)            5      896.90       4484.50
+
+Correlation (Discount % vs Profit ₹): -0.083
+
+======================================================================
+9. RETURN & CONVERSION ANALYSIS
+======================================================================
+Return Rate: 8.33%  (2 of 24 delivered orders)
+Conversion Rate: 96.00%  (24 of 25 sessions completed checkout)
+
+Returned orders detail:
+   Order_ID Product_Name Category  Revenue
+3   ORD1004     Backpack  Fashion   2548.3
+14  ORD1015      T-Shirt  Fashion   2716.6
