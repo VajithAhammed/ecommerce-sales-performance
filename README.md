@@ -5,7 +5,7 @@ Advanced Excel analysis → Python EDA → Power BI dashboard, all built and
 validated on a real 25-row transactional dataset, with a documented path to
 scale to 10,000+ records without changing the analysis architecture.
 ## 📊 Dashboard Preview
-![Dashboard Preview](screenshots/PowerBI DashBoard.png)
+![Dashboard Preview](screenshots/PowerBIDashBoard.png)
 ## Project Structure
 ```
 ecommerce-sales-performance/
